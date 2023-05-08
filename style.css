@@ -210,6 +210,24 @@ main {
 }
 
 
+.rel
+{
+    position: relative;
+}
+
+.rel i
+{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size:2em;
+    color: magenta;
+}
+
+.rel i:hover
+{
+    cursor: pointer;
+}
 
 
 

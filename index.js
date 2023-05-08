@@ -77,13 +77,50 @@ function fillMovieArea(genre) {
                     if (element.Poster == 'N/A')
                         content += `<img class="movie" src=images\\notfound.png>`;
                     else
-                        content += `<img class="movie" src=${element.Poster}>`;
+                        content += `<div class="rel"><i class="fa-regular fa-heart"></i><img class="movie" src=${element.Poster}></div>`;
+
+
                 }
 
                 container.innerHTML = content;
+
+                let hearts=document.getElementsByClassName("fa-regular","fa-heart");
+                let hasClicked=false;
+                        for (let i = 0; i < hearts.length; i++) {
+                            let h = hearts[i];
+                            h.addEventListener("mouseover",function(){
+
+                                h.classList.remove("fa-regular","fa-heart");
+                                h.classList.add("fa-solid","fa-heart");
+                            });
+
+                            h.addEventListener("mouseout",function(){
+
+                                if(!hasClicked)
+                                {
+                                    h.classList.remove("fa-solid","fa-heart");
+                                    h.classList.add("fa-regular","fa-heart");
+                                }
+                            });
+
+                            h.addEventListener("click",function(){
+
+                                hasClicked=true;
+                                h.classList.add("fa-solid","fa-heart");
+                              
+                            });
+                            h.addEventListener("dblclick",function(){
+
+                                hasClicked=false;
+                                h.classList.remove("fa-solid","fa-heart");
+                              
+                            });
+
+
+                        }
             }
             else {
-                container.innerHTML=`<p id="error" class="basefont msg">Sorry, no result based on your search . . .</p>
+                container.innerHTML = `<p id="error" class="basefont msg">Sorry, no result based on your search . . .</p>
                 </section>`;
             }
         })
